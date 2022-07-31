@@ -140,7 +140,7 @@ class route(models.Model):
         routes=models.CharField(max_length=20, null=False)
         city=models.CharField(max_length=20, null=False)
         stop=models.CharField(max_length=20, null=False)
-        time=models.CharField(max_length=20, null=False , default=NULL)
+        time=models.CharField(max_length=20, null=False)
         class Meta:
             db_table="route"
 
