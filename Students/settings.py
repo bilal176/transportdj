@@ -143,9 +143,6 @@ STATICFILES_DIRS = (
     STATIC_ROOT,        
 )
 django_heroku.settings(locals())
-
-
-
 # add mantually
 # STATICFILES_DIRS = [
 #     BASE_DIR / "static"
@@ -153,10 +150,6 @@ django_heroku.settings(locals())
 # ]
 
 #media root
-import os.path
-MEDIA_ROOT=os.path.join(BASE_DIR,'media')
-
-MEDIA_URL = "/media/"
 
 
 
