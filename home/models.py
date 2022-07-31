@@ -14,7 +14,7 @@ class emp_personal(models.Model):
     adress=models.CharField(max_length=100,null=False)
     postal_code=models.IntegerField(null=False)
     marital_status=models.CharField(max_length=50,null=False)
-    designation=models.CharField(default=NULL, max_length=50,null=False)
+    designation=models.CharField(max_length=50,null=False)
     image = models.ImageField(upload_to="employee/image")
 
     class Meta:
