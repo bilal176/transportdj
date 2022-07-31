@@ -1,0 +1,91 @@
+{% extends 'reportbase.html' %}
+{% load static %}
+{% block body %}
+
+
+<div id="wrapper">
+    <div class="main-content">
+        <div class="row small-spacing">
+            <div class="col-xs-12">
+
+
+
+    
+    <div class="container-fluid" style="background-color: rgb(255, 255, 255);">
+    
+        <div class="col-sm-4">
+      
+            <h4 class="text-center alert" style="background-color: #304FFE; color: white;"> Add City </h4>
+            <form method="post" action="">
+                {% csrf_token %}
+            <div class="col-md-12">
+              <label for="V_no">Add City</label>
+              <input type="text" class="form-control" id="cname"name="cname" placeholder="Add City"  required>
+            </div>
+            <div class="col-md-8"><br><button type="submit" class="btn btn-primary form-control" style="margin-top: 10px;">Register</button></div> 
+            
+            
+        </form>  
+    
+    </div>
+    
+    
+          
+    <div class="col-sm-8 mx-1">
+        <h4 class="text-center alert" style="background-color: #304FFE; color: white;"> Show Employee Information </h4>
+      
+      
+      
+      <table id="example" class="table table-dark table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">City</th>
+          
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Run a for loop here and iterate through all the index -->
+          
+          
+          {% for employee in task %}
+          <tr>
+            <td class="table-secondary">{{employee.cid}}</td>
+            <td class="table-secondary">{{employee.cname}}</td>
+
+     
+          </tr>
+          {% endfor %}
+
+          
+      
+        </tbody>
+      
+       
+      </table>
+      
+      
+      
+      </div>
+    
+    
+    
+    </div>
+
+    
+        
+    
+
+
+
+
+<!-- div -->
+         </div>
+        </div>
+        </div>
+        </div>
+        
+        
+        {% endblock %}
+        
+        

@@ -1,0 +1,148 @@
+{% extends 'reportbase.html' %}
+{% load static %}
+{% block body %}
+
+
+
+ <div id="wrapper">
+        <div class="main-content">
+            <div class="row small-spacing">
+
+                <div class="col-xs-12">
+                    <div class="container-fluid" style="background-color: rgb(245, 247, 250);">
+                      <h3>Vehicle Maintence Form</h3>
+                      
+                      <form method="post">
+                        {% csrf_token %}
+                         <!-- row 1 -->
+                         <div class="row">
+        
+                           <div class="form-group col-md-4">
+                               <label for="inputName" class="control-label">Employee ID</label>
+                               <select class="form-control col-md-4" name="driver_id" id="driver_id" class="form-control"  required="">
+                                <option value="">Driver ID</option>
+                                <option value="abc">abc</option>
+                                <option value="xyz">xyz</option>
+                             </select>
+                            </div>
+
+                            <div class="form-group col-md-4">
+                               <label for="inputName" class="control-label">Vehicle ID</label>
+                               <select class="form-control col-md-4" name="vid" id="vid" class="form-control" placeholder=" Color" required="">
+                                      <option value="">Vehicle</option>
+                                      <option value="abc">abc</option>
+                                      <option value="xyz">xyz</option>
+                             </select>
+                            </div>
+
+                            <div class="form-group col-md-4">
+                              <label for="inputName" class="control-label">Mechanics ID</label>
+                              <select class="form-control col-md-4" name="meachanice_id" id="meachanice_id" class="form-control" placeholder=" Color" required="">
+                                      <option value="">Mechanice ID</option>
+                                      <option value="1">abc</option>
+                                      <option value="2">xyz</option>
+                            </select>
+                           </div>
+                         
+        
+        
+                        </div>
+                     
+        <!-- row 2 -->
+                        <div class="row">
+
+
+                          <div class="form-group col-md-4">
+                            <label for="validationDefault01" class="form-label">Problem</label>
+                            <input type="text" class="form-control" id="problem" name="problem" placeholder="Description" required>
+                          </div>
+
+                          <div class="form-group col-md-4">
+                            <label for="validationDefault01" class="form-label">Work Done</label>
+                            <input type="text" class="form-control" id="workdone" name="workdone" placeholder="Description" required>
+                          </div>
+
+                          <div class="form-group col-md-4">
+                            <label for="inputName" class="control-label">External Work Required</label>
+                            <select class="form-control col-md-4"name="ewr" id="ewr" class="form-control" required="">
+                              <option value="">External Work Requires</option>
+                              <option value="Yes">Yes</option>
+                              <option value="No">No</option>
+                          </select>
+                         </div>
+
+
+        
+                        </div>
+        
+        <!-- row 3 -->
+<div class="row">
+  <div class="form-group col-md-4">
+    <label for="validationDefault01" class="form-label">Date</label>
+    <input type="date" id="date1" name="date1" class="form-control" required>
+  </div>
+
+  <div class="form-group col-md-4">
+    <button class="btn btn-primary" type="submit" style="margin-top: 32px;">Register</button>
+  </div>
+
+</div>
+
+        
+                    
+        
+                      </form>
+                  </div>
+                    </div>  
+                  
+                    <div class="col-xs-12">
+                      <h4 class="text-center alert" style="background-color: #304FFE; color: white;"> Transport Maintiance Details </h4>
+                      <table id="example" class="table table-dark table-hover">
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Driver ID</th>
+                            <th scope="col">Vehicle ID</th>
+                            <th scope="col">Mechanice ID</th>
+                            <th scope="col">Problem</th> 
+                            <th scope="col">Work Done</th> 
+                            <th scope="col">External Work</th> 
+                            <th scope="col">Date</th>        
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <!-- Run a for loop here and iterate through all the index -->
+                          {% for employee in task %}
+                          
+                          <tr>
+                          
+                             
+                            <td class="table-secondary" >{{employee.id}}</td>
+                            <td class="table-secondary" >{{employee.driver_id}}</td>
+                            <td class="table-secondary" >{{employee.vid}}</td>
+                            <td class="table-secondary" >{{employee.meachanice_id}}</td>
+                            <td class="table-secondary" >{{employee.problem}}</td>
+                            <td class="table-secondary" >{{employee.workdone}}</td>
+                            <td class="table-secondary" >{{employee.ewr}}</td>
+                            <td class="table-secondary" >{{employee.date1}}</td>
+  
+                
+                                       
+                          </tr>
+                          
+                          {% endfor %}
+                        
+                          </tbody>
+                    
+                           
+                      </table>
+                    </div>  
+
+
+
+<!-- </div> -->                
+</div>
+</div>
+</div>
+
+{% endblock %}

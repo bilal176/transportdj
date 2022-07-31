@@ -1,0 +1,182 @@
+{% extends 'reportbase.html' %}
+{% load static %}
+{% block body %}
+
+
+<div id="wrapper">
+    <div class="main-content">
+        <div class="row small-spacing">
+            <div class="col-xs-12">
+
+                <div class="container-fluid" style="background-color: rgb(245, 247, 250);">
+                    <h3>Vehicle Movement Order</h3>
+                    <form method="post" action="">
+                      {% csrf_token %}
+                      <div class="row">
+                        <div class="form-group col-md-4">
+                          <label for="V_no">Vehicle Number</label>
+                          <select class="form-control col-md-4" name="vid" id="vid"  required="">
+                            {% for automobile_details in task2 %}
+              
+                                    <option>{{automobile_details.vehicleid}}</option>
+              
+                                    {% endfor %}
+                        </select>
+                        </div>
+                        <div class="col-md-4">
+                          <label for="sec" class="form-label">Driver-1 ID</label>
+                          <select class="form-control col-md-4" name="d1" id="d1"  required="">
+                              
+                              {% for employee in task1 %}
+              
+                                    <option>{{employee.empid}}</option>
+              
+                                    {% endfor %}
+                          </select>
+                       </div>
+                        <div class="col-md-4">
+                        <label for="sec" class="form-label">Helper-1 ID</label>
+                        <select class="form-control col-md-4" name="h1" id="h1" aria-placeholder="Helper 1 ID"  required="">
+                          <option value="None">None</option>
+                          {% for employee in task1 %}
+              
+                          <option>{{employee.empid}}</option>
+    
+                          {% endfor %}
+                        </select>
+                       </div>  
+                      </div> 
+                       <div class="row">         
+                        <div class="col-md-4">
+                        <label for="sec" class="form-label">Driver-2 ID</label>
+                        <select class="form-control col-md-4" name="d2" id="d2"  required="">
+                          <option value="None">None</option>
+                          {% for employee in task1 %}                                        
+                          <option>{{employee.empid}}</option>    
+                          {% endfor %}
+                        </select>
+                     </div>
+                      <div class="col-md-4">
+                      <label for="sec" class="form-label">Helper-2 ID</label>
+                      <select class="form-control col-md-4" name="h2" id="h2"  required="">
+                        <option value="None">None</option>
+                        {% for employee in task1 %}
+              
+                        <option>{{employee.empid}}</option>
+  
+                        {% endfor %}
+                      </select>
+                     </div>  
+                      <div class="col-md-4">
+                        <label for="sec" class="form-label">Place to be Visit</label>
+                        <input type="text" class="form-control" id="station"name="station" placeholder="Station"  required>
+                      </div>
+                      </div> 
+                      <div class="row">         
+                        <div class="col-md-4">
+                          <label for="V_no">Purpose of Visit</label>
+                          <input type="text" class="form-control" id="use"name="use" placeholder="Purpose of Visit"  required>
+                        </div>
+                        <div class="form-group col-md-4">
+                          <label for="name" class="form-label">Date</label>
+                            <input class="form-control"type="date" id="outdate" name="outdate"  required>    
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="name" class="form-label">Time</label>
+                              <input class="form-control"type="Time" id="outtime" name="outtime"  required>    
+                          </div>              
+                      </div>   
+                      <div class="row">
+                        <div class="col-md-4">
+                            <label for="V_no">Vehicle Reading</label>
+                            <input type="number" class="form-control" id="outreading"name="outreading" placeholder="Vehicle Reading"  required>
+                          </div>
+                        <div class="col-md-4">
+                            <label for="V_no">Submitted By</label>
+                            <input type="text" class="form-control" id="Submittedby"name="Submittedby" placeholder="Submitted By"  required>
+                          </div>
+                          <div class="col-md-4">
+                            <label for="V_no">Recommended By</label>
+                            <input type="text" class="form-control" id="recommendedby"name="recommendedby" placeholder="Recommended By"  required>
+                          </div>
+                          
+                      </div>      
+                    <div class="row">
+                        <div class="col-md-4">
+                          <label for="V_no">Approved By</label>
+                          <input type="text" class="form-control" id="approvedby"name="approvedby" placeholder="Approved By"  required>
+                        </div>
+                        <div class="col-md-4"><br><button type="submit" class="btn btn-primary form-control" style="margin-top: 10px;">Register</button></div> 
+                    </div>  
+                               
+                        
+                    </form>    
+                  </div>
+
+
+                  <div class="col-xs-12 my-4">
+                    <h4 class="text-center alert" style="background-color: #304FFE; color: white;"> Transport Maintiance Details </h4>
+                    <table id="example" class="table table-dark table-hover">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Driver ID</th>
+                          <th scope="col">Vehicle ID</th>
+                          <th scope="col">Mechanice ID</th>
+                          <th scope="col">Problem</th> 
+                          <th scope="col">Work Done</th> 
+                          <th scope="col">External Work</th> 
+                          <th scope="col">Date</th>        
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!-- Run a for loop here and iterate through all the index -->
+                        {% for employee in task %}
+                        
+                        <tr>
+                        
+                           
+                          <td class="table-secondary" >{{employee.id}}</td>
+                          <td class="table-secondary" >{{employee.driver_id}}</td>
+                          <td class="table-secondary" >{{employee.vid}}</td>
+                          <td class="table-secondary" >{{employee.meachanice_id}}</td>
+                          <td class="table-secondary" >{{employee.problem}}</td>
+                          <td class="table-secondary" >{{employee.workdone}}</td>
+                          <td class="table-secondary" >{{employee.ewr}}</td>
+                          <td class="table-secondary" >{{employee.date1}}</td>
+
+              
+                                     
+                        </tr>
+                        
+                        {% endfor %}
+                      
+                        </tbody>
+                  
+                         
+                    </table>
+                  </div>  
+
+
+
+
+
+
+
+
+
+
+                  
+                  
+                     <!-- </div> -->                   
+
+                     
+                    
+</div>
+</div>
+</div>
+</div>
+
+
+{% endblock %}
+

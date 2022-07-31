@@ -1,0 +1,106 @@
+{% extends 'reportbase.html' %}
+{% load static %}
+{% block body %}
+
+
+<div id="wrapper">
+    <div class="main-content">
+        <div class="row small-spacing">
+            <div class="col-xs-12">
+
+
+
+    
+    <div class="container-fluid" style="background-color: rgb(255, 255, 255);">
+    
+        <div class="col-sm-3">
+      
+            <h4 class="text-center alert" style="background-color: #304FFE; color: white;"> Add City </h4>
+            <form method="post" action="">
+                {% csrf_token %}
+                <div class="col-md-12">
+                  <label for="sec" class="form-label">Select Route</label>
+                  <select class="form-control col-md-4" name="cname" id="cname"  required="">
+                    <option value=""> Select City</option>
+                      
+                      {% for employee in task %}
+      
+                            <option>{{employee.cname}}</option>
+      
+                            {% endfor %}
+                  </select>
+               </div>
+            <div class="col-md-12">
+              <label for="V_no">Add Route</label>
+              <input type="text" class="form-control" id="rname"name="rname" placeholder="Add City"  required>
+            </div>
+
+            <div class="col-md-8"><br><button type="submit" class="btn btn-primary form-control" style="margin-top: 10px;">Register</button></div> 
+            
+            
+        </form>  
+    
+    </div>
+    
+    
+          
+    <div class="col-sm-9 mx-1">
+        <h4 class="text-center alert" style="background-color: #304FFE; color: white;"> Show Employee Information </h4>
+      
+      
+      
+      <table id="example" class="table table-dark table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">City</th>
+            <th scope="col">Route</th>
+          
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Run a for loop here and iterate through all the index -->
+          
+          
+          {% for employee in task2 %}
+          <tr>
+            <td class="table-secondary">{{employee.cid}}</td>
+            <td class="table-secondary">{{employee.cname}}</td>
+            <td class="table-secondary">{{employee.rname}}</td>
+
+     
+          </tr>
+          {% endfor %}
+
+          
+      
+        </tbody>
+      
+       
+      </table>
+      
+      
+      
+      </div>
+    
+    
+    
+    </div>
+
+    
+        
+    
+
+
+
+
+<!-- div -->
+         </div>
+        </div>
+        </div>
+        </div>
+        
+        
+        {% endblock %}
+        
+        

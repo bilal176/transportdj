@@ -1,0 +1,156 @@
+{% extends 'reportbase.html' %}
+{% load static %}
+{% block body %}
+
+
+
+ <div id="wrapper">
+        <div class="main-content">
+            <div class="row small-spacing">
+
+                <div class="col-xs-12">
+                    <div class="container-fluid" style="background-color: rgb(245, 247, 250);">
+                      <h3>Transport Routes Details</h3>
+                      
+                      
+                      <form method="post">
+                        {% csrf_token %}
+                         <!-- row 1 -->
+                         <div class="row">
+        
+                           <div class="form-group col-md-4">
+                               <label for="inputName" class="control-label">Session</label>
+                               <select class="form-control col-md-4" name="session" id="session" class="form-control"  required="">
+                                 <option value="">Session</option>
+                                 <option value="Fall">Fall</option>
+                                 <option value="Spring">Spring</option>
+                             </select>
+                            </div>
+
+                            <div class="form-group col-md-4">
+                               <label for="inputName" class="control-label">Select Vehicle</label>
+                               <select class="form-control col-md-4" name="v_id" id="v_id" class="form-control" placeholder=" Color" required="">
+                                <option value="">Vehicle</option>
+                                <option value="Bus">Bus</option>
+                                <option value="High Ace">High Ace</option>
+                             </select>
+                            </div>
+
+                            <div class="form-group col-md-4">
+                              <label for="inputName" class="control-label">Select City</label>
+                              <select class="form-control col-md-4" name="city" id="city" class="form-control" placeholder=" Color" required="">
+                                <option value="">City</option>
+                                {% for employee in task1 %}
+                                <option value="{{employee.cname}}">{{employee.cname}}</option>
+                                {% endfor %}
+                            </select>
+                           </div>
+                         
+        
+        
+                        </div>
+                     
+        <!-- row 2 -->
+                        <div class="row">
+                          <div class="form-group col-md-4">
+                            <label for="inputName" class="control-label">Select Route</label>
+                            <select class="form-control col-md-4" name="routes" id="routes" class="form-control" placeholder=" Color" required="">
+                              <option value="">Select Route</option>
+                              {% for employee in task1 %}
+                            <option value="{{employee.rname}}">{{employee.rname}}</option>
+                            {% endfor %}
+                          </select>
+                         </div>
+
+
+                         <div class="form-group col-md-4">
+                          <label for="inputName" class="control-label">Select Stop</label>
+                          <select class="form-control col-md-4" name="stop" id="stop" class="form-control" placeholder=" Color" required="">
+                            <option value="">Stop</option>
+                            {% for employee in task1 %}
+                            <option value="{{employee.sname}}">{{employee.sname}}</option>
+                            {% endfor %}
+                        </select>
+                       </div>
+                       <div class="form-group col-md-4">
+                        <label for="name" class="form-label">Time</label>
+                          <input class="form-control"type="Time" id="time" name="time"  required>    
+                      </div>   
+        
+                       <div class="col-md-4">
+                        <button class="btn btn-primary" type="submit" style="margin-top: 32px;">Register</button>
+                      </div>
+                         
+          
+            
+        
+                        </div>
+        
+        
+
+        
+                    
+        
+                      </form>
+                      
+                    
+                  </div>
+                    </div>  
+                            
+                    <div class="col-xs-12">
+                      <h4 class="text-center alert" style="background-color: #304FFE; color: white;"> Transport Routes Details </h4>
+                      <a style="margin-bottom: 30px;" class="btn btn-primary my-2" href="{% url 'create-route-sahiwal' %}">Download Sahiwal Routes</a>
+                      <a style="margin-bottom: 30px;" class="btn btn-primary my-2" href="{% url 'create-route-okara' %}">Download Okara Routes</a>
+                      <table id="example" class="table table-dark table-hover" >
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Session</th>
+                            <th scope="col">Vehicle No</th>
+                            <th scope="col">Route</th>
+                            <th scope="col">City</th>
+                            <th scope="col">Stop</th> 
+                            <th scope="col">Time</th> 
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <!-- Run a for loop here and iterate through all the index -->
+                          {% for employee in task %}
+                          
+                          <tr>
+                          
+                             
+                            <td class="table-secondary" >{{employee.rid}}</td>
+                            <td class="table-secondary" >{{employee.session}}</td>
+                            <td class="table-secondary" >{{employee.v_id}}</td>
+                            <td class="table-secondary" >{{employee.routes}}</td>
+                            <td class="table-secondary" >{{employee.city}}</td>
+                            <td class="table-secondary" >{{employee.stop}}</td>
+                            <td class="table-secondary" >{{employee.time}}</td>
+<!-- 
+                            <td class="table-secondary" >
+
+                              <img src="{% static 'image/update_64.png' %}" alt="" style="width: 30px; height: 30px;">
+                              <img src="{% static 'image/delete.png' %}" alt="" style="margin-left: 10px; width: 30px; height: 30px;"> 
+                            </td> -->
+                
+                                       
+                          </tr>
+                          
+                          {% endfor %}
+                        
+                          </tbody>
+                    
+                           
+                      </table>
+                    </div>   
+
+
+
+                
+<!-- </div> -->                
+</div>
+</div>
+</div>
+
+{% endblock %}
